@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.对象有__proto__ 和constructor 函数本身有prototype但是因为也属于对象所有也有__proto__ 和constructor
+        function instance_of(L, R) {
+            var type = R.prototype;
+            L = L.__proto__
+            for (; ;) {
+                if (L === null) {
+                    //在type的原型中没有找到
+                    return false
+                }
+                if (L === type) {
+                    return true
+                }
+                L = L.__proto__
+            }
+        }
+
+        // 2.Fun函数的prototype和实例化之后的obj.__proto相等因为他们同时指向一个constructor
+
+        function Fun() {
+            this.a = 1
+        }
+
+        let obj = new Fun()
+
+        //通用父类方法
+        function Person(name){
+            this.name = name
+            this.sayName = function (){
+                alert(this.name)
+            }
+        }
+        Person.prototype.age = 11
+
+
+        // 3.新实例的原型指向父类的实例Per.prototype = new Person() 可以继承父类的构造函数属性(constructor)，构造函数内的方法属性和原型上的方法属性
+        // 缺点：无法向父类传参数 所有父类原型上属性都是公用的也就是一个实例更改另一个也会更改 
+
+        function Per(){
+            this.name = 'gxx'
+        }
+
+        Per.prototype = new Person()
+
+        var per1  = new Per()
+        var per2  = new Per()
+
+        per1.age = '333'
+
+        console.log(per1.age)
+
+        //4.借用构造函数继承通过call apply 改变this指向可以给父类的构造函数传参数
+        // 缺点：继承不到原型上的属性
+
+        function Con(){
+            Person.call(this,'wmh')
+        }
+
+        var con1 = new Con()
+        
+        //4.组合继承（原型链继承+借用构造函数继承） 可以继承父类原型上的属性，可以传参，可复用
+        //缺点：调用了两次父类构造函数（耗内存），子类的构造函数会代替原型上的那个父类构造函数。
+
+        function SubType(name){
+            Person.call(this,name)
+        }
+
+        SubType.prototype = new Person()
+
+        var sub = new SubType()
+
+        //5.寄生式组合继承
+
+
+        function F(){}
+
+        //父类函数的原型赋值给 F的原型对象
+        F.prototype = Person.prototype
+
+        function Sub(name){
+            //父类的方法指向子类的构造函数
+            Person.call(this,name)
+        }
+
+        Sub.prototype =  new F()
+
+        var Sub1 = new Sub('llll')
+        var Sub2 = new Sub('llll')
+
+
+    </script>
+</body>
+
+</html>
