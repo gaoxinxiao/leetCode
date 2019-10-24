@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Fun(){
+            this.name = 1
+            return '1221'
+        }
+
+        var fun1 = new Fun()
+
+
+        function $new(){
+            var obj = new Object()
+            Constructor =  [].shift.call(arguments)
+            obj.__proto__ = Constructor.prototype
+            var res = Constructor.apply(obj,arguments)
+
+            return typeof res === 'object' ? res : obj
+        }
+
+        
+        var fun2 = $new(Fun)
+    </script>
+</body>
+</html>
