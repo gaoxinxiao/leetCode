@@ -8,6 +8,7 @@
 </head>
 <body>
     <script>
+        
         function Fun(){
             this.name = 1
             return '1221'
@@ -15,6 +16,15 @@
 
         var fun1 = new Fun()
 
+
+        /**
+         * 实现思想 
+         * 1.首先创建一个对象 
+         * 2.取到arguments的第一个参数也就是传进来的即将被实例化的函数赋值给Constructor
+         * 3.让当前创建的obj的__proto__绑定到Constructor.prototype 因为要访问构造函数里的属性
+         * 4.通过apply改变构造函数内部的指向
+         * 5.最后判断一下构造函数的返还参数 
+         *  */
 
         function $new(){
             var obj = new Object()
@@ -25,7 +35,7 @@
             return typeof res === 'object' ? res : obj
         }
 
-        
+
         var fun2 = $new(Fun)
     </script>
 </body>

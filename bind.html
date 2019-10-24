@@ -19,6 +19,7 @@
             console.log(this.name + "-----" + this.age+'---'+age)
         }
 
+
         Function.prototype.$call = function (target) {
             var arr = []
             target.fn = this
@@ -43,7 +44,7 @@
                 }
             }
         }
-        var test1 = test.$bind(s,666)
+        var test1 = test.$call(s,666)
 
 
 
