@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = {
+            name: 'book',
+            book: { auther:"gxx"},
+            c:undefined,
+            d:Symbol,
+            e:function (){},
+        }
+  
+        var b = JSON.stringify(a)
+
+        a.name = 'pic'
+        a.book.auther = 'wmh'
+
+     
+        console.log(a)
+        console.log(JSON.parse(b))
+
+        //symbol查看 序列化函数
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head> 
+<body>
+</body>
+<script>
+    var obj = {
+        name: 'gxx',
+        type: false,
+        age: 1,
+        dog: {
+            color: "brown",
+            wow: "wawawa"
+        },
+        car: [
+            10,
+            20
+        ]
+    }
+
+    function Copy(val) {
+        var objClone = Array.isArray(val) ? [] : {}
+        for (var key in val) {
+            if (typeof val[key] == 'object') {
+                objClone[key] = Copy(val[key])
+            } else {
+                objClone[key] = val[key]
+            }
+        }
+        return objClone
+    }
+
+    var obj1 = Copy(obj)
+
+    obj1.age = 2
+    obj1.dog.color = 'white'
+    obj1.car[0] = 40
+    console.log(obj)
+    console.log(obj1)
+</script>
+
+</html>

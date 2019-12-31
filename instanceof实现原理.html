@@ -37,6 +37,7 @@
         //通用父类方法
         function Person(name){
             this.name = name
+            this.arr = ['red']
             this.sayName = function (){
                 alert(this.name)
             }
@@ -58,7 +59,6 @@
 
         per1.age = '333'
 
-        console.log(per1.age)
 
         //4.借用构造函数继承通过call apply 改变this指向可以给父类的构造函数传参数
         // 缺点：继承不到原型上的属性
@@ -95,10 +95,15 @@
 
         Sub.prototype =  new F()
 
-        var Sub1 = new Sub('llll')
+        var Sub1 = new Sub('')
         var Sub2 = new Sub('llll')
+        
+        per1.arr.push('green')
 
 
+
+        console.log(per1)
+        console.log(per2)
     </script>
 </body>
 

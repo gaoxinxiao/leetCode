@@ -15,7 +15,7 @@
             age:1
         }
         
-        function test(age) {
+        function test(age,num) {
             console.log(this.name + "-----" + this.age+'---'+age)
         }
 
@@ -44,7 +44,13 @@
                 }
             }
         }
-        var test1 = test.$call(s,666)
+        var test1 = test.$call(s,666,1)
+
+
+        let a =1; 
+        console.log(a) 
+        console.log(a++)
+        console.log(++a)
 
 
 
