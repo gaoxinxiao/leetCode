@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //单例模式
+        function Singleton() {
+            let instance = null
+            //实现一个简单的类
+            function createDiv(html) {
+                if (instance) {
+                    return instance
+                }
+                this.html = html
+
+                return instance = this
+            }
+            createDiv.prototype.init = function () {
+                let div = document.createElement('div')
+                div.innerHTML = this.html
+                document.body.append(div)
+            }
+            return createDiv
+        }
+        const A = new Singleton('A')('A')
+        const B = new Singleton('B')('B')
+        console.log(A === B); //true
+    </script>
+</body>
+
+</html>

@@ -7,25 +7,159 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    html {
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+    }
+
+    .box {
+        width: 100%;
+        height: 100%;
+        background: green;
+        display: flex;
+    }
+
+    .a,
+    .b,
+    .c {
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+
+    .a {
+        flex: 1;
+        align-self: flex-start;
+    }
+
+    .b {
+        flex: 1;
+        align-self: center;
+    }
+
+    .c {
+        flex: 1;
+        align-self: flex-end;
+    }
+</style>
 
 <body>
+
+    <div class="box">
+        <div class="a">
+            1
+        </div>
+        <div class="b">
+            2
+        </div>
+        <div class="c">
+            3
+        </div>
+    </div>
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
-        var a = {
-            name: 'book',
-            book: { auther:"gxx"},
-            c:undefined,
-            d:Symbol,
-            e:function (){},
+        const persion = {
+            name: 'caic',
+            getName: () => this.name
         }
-  
-        var b = JSON.stringify(a)
 
-        a.name = 'pic'
-        a.book.auther = 'wmh'
+            //    console.log( persion.getName())
 
-     
-        console.log(a)
-        console.log(JSON.parse(b))
+            // persion.getName.bind(persion)
+
+                persion.getName.bind(persion)()
+
+
+        // let count = 1;
+        // while (count < 20) {
+
+        //     count = count * 2;
+
+        // }
+        // console.log(count)
+            // let $body = $('body');
+            // let arr = [1,2,3,4,5];
+            // let i,length = arr.length,$a;
+            // for ( i=0;i<length;i++){
+            //     $a = $(`<a>${i}</a>`);
+            //     $body.append($a);
+            //     $a.click(function(){
+            //         alert(i)
+            //     })
+            // }
+
+            // new Promise(()=>{
+            //     throw new Error();
+            // }).then(()=>{
+            //     console.log(1)
+            // }).catch(()=>{
+            //     console.log(3)
+            // }).then(()=>{
+            //     console.log(4)
+            // })
+
+
+            // console.log(123 instanceof Number)//false
+            // console.log(new Number(123) instanceof Number)//true
+            // console.log(Number(123) instanceof Number)//false
+
+            // const obj = {
+            //     a:100
+            // }
+            // const obj1 = obj;
+            // let a1 = obj.a; 
+
+            // obj1.a = 200;
+
+            // console.log(obj.a);//200
+            // console.log(a1);//100
+
+            // a1 = 300;
+            // console.log(obj.a); //200
+            // console.log(obj1.a); //200
+
+        // var a = 100
+        // function create() {
+        //     var a = 200;//局部产生的变量和外界没有关系
+        //     fn(); //100
+        // }
+        // function fn() {
+        //     console.log(a)
+        // }
+        // create()
+
+
+        // function create(fn) {
+        //     var a = 200
+        //     return function (){
+        //         console.log(a,'12')
+        //     }
+        // }
+        // var fn = create();
+        // fn(); //200
+
+
+        // var a = {
+        //     name: 'book',
+        //     book: { auther: "gxx" },
+        //     c: undefined,
+        //     d: Symbol,
+        //     e: function () { },
+        // }
+
+        // var b = JSON.stringify(a)
+
+        // a.name = 'pic'
+        // a.book.auther = 'wmh'
+
+
+        // console.log(a)
+        // console.log(JSON.parse(b))
 
         //symbol查看 序列化函数
     </script>

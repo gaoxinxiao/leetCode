@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>拖拽效果</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+    <style>
+        html, body, #container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .amap-marker:first-child .amap-icon img {
+            width: 25px;
+            height: 34px;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<div class="info">鼠标拖拽点标记试试</div>
+<script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=您申请的key值"></script>
+<script type="text/javascript">
+    var map = new AMap.Map("container", {
+        resizeEnable: true,
+        center: [116.397428, 39.90923],
+        zoom: 13
+    });
+
+    var marker = new AMap.Marker({
+        position: map.getCenter(),
+        icon: './images/dingwei.png',
+        offset: new AMap.Pixel(-13, -30),
+        // 设置是否可以拖拽
+        draggable: true,
+        cursor: 'move',
+        // 设置拖拽效果
+        raiseOnDrag: true
+    });
+
+    marker.setMap(map);
+</script>
+</body>
+</html>

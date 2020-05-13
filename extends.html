@@ -1,0 +1,56 @@
+<script>
+    class a {
+        count = 1;
+        name = "a"
+
+        getName() {
+            return this.name + '1'
+        }
+
+        getCount = () => {
+            return this.count
+        }
+    }
+    class b extends a {
+        count = 2;
+        name = "b"
+
+        getName = () => {
+            return this.name
+        }
+        getCount() {
+            return this.count
+        }
+
+    }
+
+    var c = new a();
+    var d = new b();
+
+
+    c.getName();//这个很简单就是单纯的调用getName返回a1
+    d.getCount();//这个调用的就是自身的getCount因为自身没有getCount才会去原型上找所以返回的是2
+
+    delete d.getName; //删除d实例自身的方法
+
+    d.getName();//d的实例上getName方法被删除了去原型上找 有继承a 的getName 所以返回b1
+
+    d.__proto__.getName();//去d的原型上找getName但是原型上并没有name所以返回 undefined1
+
+    d.__proto__.getCount();//去d的原型上找getCount有这个函数但是原型中没有定义count属性所以返回undefined
+
+    //delete只会删除自身属性和方法比如在b上能打印到的属性和方法就是可以删除的
+    //class 类继承的时候如果继承的函数是箭头函数会在实例里面，因为箭头函数是没有原型的 （prototype） 普通函数会继承到原型上
+
+
+    var data = {};
+    for (var i = 0; i < 10; i++) {
+        data[i] = function () {
+            console.log(i)
+            //永远会是10，因为i是全局变量，for循环完毕，i是10
+            // 用let声明i或者用下边注释的方法利用闭包来保存变量就可以输出理想的值
+        };
+    };
+    console.log(data['8']()); 
+
+</script>
