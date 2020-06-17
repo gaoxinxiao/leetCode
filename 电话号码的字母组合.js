@@ -25,8 +25,8 @@ var letterCombinations = function (digits) {
         ]
     ])
     let arr = [];
-    defs('', digits, 0, arr, map);
-    function defs(s, digits, i, arr, map) {
+    defs('', 0);
+    function defs(s, i) {
         //terminator 边界条件
         if (i == digits.length) {
             arr.push(s);
@@ -35,10 +35,10 @@ var letterCombinations = function (digits) {
         let letters = map.get(digits.charAt(i));
         for (var j = 0; j < letters.length; j++) {
             //drill down 调用自身
-            defs(s + letters.charAt(j), digits, i + 1, arr, map);
+            defs(s + letters.charAt(j), i + 1);
         }
     }
     return arr;
 };
 
-letterCombinations('23')
+console.log(letterCombinations('235'))

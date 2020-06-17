@@ -24,24 +24,19 @@
 <script type="text/javascript"
         src="https://webapi.amap.com/maps?v=1.4.15&key=您申请的key值"></script>
 <script type="text/javascript">
-    var map = new AMap.Map("container", {
-        resizeEnable: true,
-        center: [116.397428, 39.90923],
-        zoom: 13
-    });
+"use strict";
+var a = 1;
 
-    var marker = new AMap.Marker({
-        position: map.getCenter(),
-        icon: './images/dingwei.png',
-        offset: new AMap.Pixel(-13, -30),
-        // 设置是否可以拖拽
-        draggable: true,
-        cursor: 'move',
-        // 设置拖拽效果
-        raiseOnDrag: true
-    });
+function foo () {
+    var a = 2;
+    return function () {
+        console.log(this.a);
+    }
+}
 
-    marker.setMap(map);
+var bar = foo().bind(this);
+bar();
+
 </script>
 </body>
 </html>
