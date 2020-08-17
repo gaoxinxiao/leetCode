@@ -4,30 +4,30 @@ var arr = [5, 2, 3, 1];
 // //1.首先分解数组分成每一个单独独立的
 // //2.比较数组的值放到一个新数组 里面
 
-// function mergeSort(list) {
-//     let len = list.length;
-//     if (list.length === 1) return list;
-//     let mid = parseInt(len / 2);
-//     let left = list.slice(0, mid);
-//     let right = list.slice(mid, len);
-//     let mergeSortLeft = mergeSort(left);
-//     let mergeSortRight = mergeSort(right);
-//     return sortArray(mergeSortLeft, mergeSortRight);
-// }
-// function sortArray(l, r) {
-//     const result = [];
-//     while (l.length && r.length) {
-//         if (l[0] < r[0]) {
-//             result.push(l.shift());
-//         } else {
-//             result.push(r.shift());
-//         }
-//     }
-//     //将剩下的元素加上
-//     while (l.length) result.push(l.shift());
-//     while (r.length) result.push(r.shift());
-//     return result;
-// }
+function mergeSort(list) {
+    let len = list.length;
+    if (list.length === 1) return list;
+    let mid = parseInt(len / 2);
+    let left = list.slice(0, mid);
+    let right = list.slice(mid, len);
+    let mergeSortLeft = mergeSort(left);
+    let mergeSortRight = mergeSort(right);
+    return sortArray(mergeSortLeft, mergeSortRight);
+}
+function sortArray(l, r) {
+    const result = [];
+    while (l.length && r.length) {
+        if (l[0] < r[0]) {
+            result.push(l.shift());
+        } else {
+            result.push(r.shift());
+        }
+    }
+    //将剩下的元素加上
+    while (l.length) result.push(l.shift());
+    while (r.length) result.push(r.shift());
+    return result;
+}
 
 // mergeSort(arr)
 

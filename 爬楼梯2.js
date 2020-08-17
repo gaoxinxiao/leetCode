@@ -14,4 +14,4 @@ var climbStairs = function (n) {
     return f3
 };
 console.log(
-    climbStairs(4))
+    climbStairs(30))

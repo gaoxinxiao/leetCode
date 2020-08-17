@@ -35,7 +35,24 @@
         }
 
         var fun2 = $new(Fun)
-        console.log(fun2)
+
+        var a = 'my global';
+        function m1() {
+            console.log(this);
+            console.log(this.a);
+        }
+
+        var obj = {
+            a: 'my own',
+            m2: function (fn) {
+                fn && fn.call(this);
+                return function () {
+                    return this.a;
+                };
+            }
+        };
+
+        console.log(obj.m2(m1)())
     </script>
 
 </body>

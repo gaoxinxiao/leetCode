@@ -8,7 +8,7 @@ var sortArray = function (nums) {
     if (nums.length <= 1) return nums;
     var index = Math.floor(nums.length / 2);
     var base = nums.splice(index, 1);
-    var left = [], right = [], arr = [];
+    var left = [], right = [];
     for (var i = 0; i < nums.length; i++) {
         if (nums[i]<base){
             left.push(nums[i]);

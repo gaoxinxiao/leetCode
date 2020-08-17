@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<heml lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>发布订阅模式</title>
+    </head>
+
+    <body>
+        <script>
+            class Event {
+                constructor() { }
+                handlers = {} //存放订阅者
+                addHandles(type, handelr) {
+                    if (!this.handlers[type]) {
+                        this.handlers[type] = []
+                    }
+                    this.handlers[type].push(handelr)
+                    console.log(this.handlers)
+                }
+                dispacheHandles(type, ...params) {
+                    if (!this.handlers[type]) {
+                        return new Error('未注册事件')
+                    }
+                    this.handlers[type].forEach(handelr => { handelr(params) })
+                }
+                removeHandles(type) {
+                    if (!this.handlers[type]) {
+                        return new Error('无效事件')
+                    }
+                    delete this.handlers[type]
+                }
+            }
+            const event = new Event()
+            event.addHandles('load', (params) => {
+                console.log(params)
+            })
+            event.addHandles('load2', (params) => {
+                console.log(params)
+            })
+            event.dispacheHandles('load', '我是load1')
+            event.dispacheHandles('load2', '我是load2')
+        </script>
+    </body>
+</heml>

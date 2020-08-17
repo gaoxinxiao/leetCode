@@ -63,16 +63,20 @@
 
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
+
+
+
+
         const persion = {
             name: 'caic',
             getName: () => this.name
         }
 
-            //    console.log( persion.getName())
+        //    console.log( persion.getName())
 
-            // persion.getName.bind(persion)
+        // persion.getName.bind(persion)
 
-                persion.getName.bind(persion)()
+        persion.getName.bind(persion)()
 
 
         // let count = 1;
@@ -162,6 +166,52 @@
         // console.log(JSON.parse(b))
 
         //symbol查看 序列化函数
+    </script>
+    <script>
+        function Person() { }
+
+        function son() { }
+
+        son.prototype = new Person()
+
+        var Son = new son()
+
+        console.log(Son.constructor)
+
+    </script>
+    <script>
+        class a {
+            name = 'a';
+            count = 1;
+            getName() {
+                return 'a' + 1;
+            }
+            getCount = () => {
+                return this.count;
+            }
+        }
+
+        class b extends a {
+            name = 'b';
+            count = 2;
+            getName() {
+                return this.name + this.count;
+            }
+            getCount = () => {
+                return this.count;
+            }
+        }
+
+        var c = new a();
+        var d = new b();
+
+        console.log(c.getName()) //a1
+        console.log(d.getCount()) //2
+
+        delete d.getName
+
+        d.__proto__.getCount();
+
     </script>
 </body>
 
