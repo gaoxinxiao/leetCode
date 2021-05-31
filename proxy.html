@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const xw = {
+            loveletter: "我喜欢你,我想和你睡觉"
+        }
+        // Object.defineProperty(xw,'love',{
+        //     get(){
+        //         return xw.loveletter.replace('睡觉','一起在晨辉的沐浴下起床')
+        //     }
+        // })
+
+        const proxy = new Proxy(xw, {
+            get(target, key) {
+                if (key === 'loveletter') {
+                    return target[key].replace('睡觉', '一起在晨辉的沐浴下起床')
+                }
+            }
+        })
+
+
+        function observe(obj, callback) {
+            const newObj = {}
+            const proxy = new Proxy(obj, {
+                get(target, key) {
+                    return target[key]
+                },
+                set(target, key, val) {
+                    target[key] = val
+                    callback(key, val)
+                }
+            })
+            return proxy
+
+
+            // Object.keys(obj).forEach(key => {
+            //     Object.defineProperty(newObj, key, {
+            //         configurable: true,//表示属性是否可以被修改
+            //         enumerable: true, //表示是否可枚举
+            //         get() {
+            //             return obj[key]
+            //         },
+            //         set(val) {
+            //             obj[key] = val
+            //             callback(key, val)
+            //         }
+            //     })
+            // })
+            // return newObj
+        }
+
+        const obj = observe(
+            {
+                name: '子君',
+                sex: '男'
+            },
+            (key, value) => {
+                console.log(`属性[${key}]的值被修改为[${value}]`)
+            }
+        )
+
+        let obj1 = {
+            name: "gxx",
+            age:"12"
+        }
+        //将obj1代理到proxy1上面
+        const proxy1 = new Proxy(obj1,{
+            deleteProperty(target,key){
+                if (key ==='age') {
+                    alert('不可以删除age属性')
+                }
+                delete Reflect.get(target,key) //不可以删除
+                delete target[key] //可以删除
+            }
+        })
+        delete proxy1.name
+        console.log(proxy1)
+
+    </script>
+</body>
+
+</html>

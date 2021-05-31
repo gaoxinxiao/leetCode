@@ -4,10 +4,7 @@ function Fb(n){
     if (n<=2) return 1;
     return Fb(n-1) + Fb(n-2);
 }
-console.log(Fb(25),'普通版本')//加到10位 第十位返回55
-console.log('函数执行次数',count)
 
-1,1,2,3,5,8,13,21,34,55
 
 function createFib(){
     var cache = [];//做缓存
@@ -30,8 +27,6 @@ function createFib(){
     return fib
 }
 
-console.log(createFib()(11),'缓存版本')//加到11 
-console.log('函数执行次数',num)
 
 let vcount = 0;
 
@@ -51,5 +46,4 @@ function Fibo(n) {
 	return n_value;
 }
 
-console.log(Fibo(11),'for循环版本')//加到11 
-console.log('函数执行次数',vcount)
+console.log(Fibo(10),'for循环版本')//加到11 
